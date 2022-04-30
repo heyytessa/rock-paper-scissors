@@ -2,10 +2,11 @@ let gamePlay = ['rock', 'paper', 'scissors'];
 let playerScore = 0
 let computerScore = 0
 
+let rockBtn = document.getElementsById('rock-button');
+let paperBtn = document.getElementById('paper-button');
+let scissorsBtn = document.getElementById('scissors-button');
 let winnerAnnouncement = document.querySelector('div');
-console.log(winnerAnnouncement);
 let winner = document.createElement('p');
-console.log(winner);
 winnerAnnouncement.appendChild(winner);
 
 function computerPlay() {
