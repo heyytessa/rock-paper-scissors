@@ -3,17 +3,16 @@
 let gamePlay = ['rock', 'paper', 'scissors'];
 let playerScore = 0
 let computerScore = 0
-
 let rockBtn = document.getElementById('rock-button');
 let paperBtn = document.getElementById('paper-button');
 let scissorsBtn = document.getElementById('scissors-button');
 let playerEmoji = document.getElementById('player-emoji');
 let computerEmoji = document.getElementById('computer-emoji');
+let playerScorecount = document.getElementById('player-scorecount');
+let computerScorecount = document.getElementById('computer-scorecount');
 let roundResult = document.getElementById('round-result');
 let winnerModal = document.getElementById('modal');
 let playAgainBtn = document.getElementById('modal-button')
-let playerScorecount = document.getElementById('player-scorecount');
-let computerScorecount = document.getElementById('computer-scorecount');
 let winnerAnnouncement = document.getElementById('winner-content');
 let winner = document.createElement('p');
 winnerAnnouncement.prepend(winner);
@@ -84,19 +83,13 @@ function playRound(playerSelection, computerSelection) {
       break;
     }  
   }
-
-  
   playerScorecount.textContent = 'You: ' + playerScore;
   computerScorecount.textContent = 'Computer: ' + computerScore;
-
 }
-
-//UI
 
 function game (playerSelection) {
   let computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
-
    if (playerScore === 5) {
      winnerModal.setAttribute ('class', 'modal-visible');
      winner.textContent = 'Congratulations, you won! 🥳';
