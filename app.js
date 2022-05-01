@@ -10,9 +10,18 @@ let scissorsBtn = document.getElementById('scissors-button');
 let playerEmoji = document.getElementById('player-emoji');
 let computerEmoji = document.getElementById('computer-emoji');
 let roundResult = document.getElementById('round-result');
-let winnerAnnouncement = document.querySelector('div');
+let winnerModal = document.getElementById('modal');
+let playAgainBtn = document.getElementById('modal-button')
+let playerScorecount = document.getElementById('player-scorecount');
+let computerScorecount = document.getElementById('computer-scorecount');
+let winnerAnnouncement = document.getElementById('winner-content');
 let winner = document.createElement('p');
-winnerAnnouncement.appendChild(winner);
+winnerAnnouncement.prepend(winner);
+
+rockBtn.addEventListener('click', () => game('rock'));
+paperBtn.addEventListener('click', () => game('paper'));
+scissorsBtn.addEventListener('click', () => game('scissors'));
+playAgainBtn.addEventListener('click', restart);
 
 function computerPlay() {
   let computerSelection = gamePlay[Math.floor(Math.random()*gamePlay.length)];
@@ -51,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         roundResult.textContent = 'Scissors cut paper, the computer wins this round!';
       break;
-      case 'rock':
+      case 'paper':
         computerEmoji.textContent = '📃';
         roundResult.textContent = 'This round is a draw.';
       break;
@@ -76,27 +85,33 @@ function playRound(playerSelection, computerSelection) {
     }  
   }
 
-  let playerScorecount = document.getElementById('player-scorecount');
+  
   playerScorecount.textContent = 'You: ' + playerScore;
-
-  let computerScorecount = document.getElementById('computer-scorecount');
   computerScorecount.textContent = 'Computer: ' + computerScore;
 
 }
 
 //UI
 
-rockBtn.addEventListener('click', () => game('rock'));
-paperBtn.addEventListener('click', () => game('paper'));
-scissorsBtn.addEventListener('click', () => game('scissors'));
-
 function game (playerSelection) {
   let computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
 
    if (playerScore === 5) {
-     winner.textContent = 'Congratulations, you won!';
+     winnerModal.setAttribute ('class', 'modal-visible');
+     winner.textContent = 'Congratulations, you won! 🥳';
     } else if (computerScore === 5) {
-     winner.textContent = 'Sorry, you lost!';
+     winnerModal.setAttribute ('class', 'modal-visible');
+     winner.textContent = 'Sorry, you lost! 😭';
     }
 }
+
+function restart () {
+  playerScore = 0;
+  computerScore = 0;
+  winnerModal.setAttribute('class', 'modal');
+  playerScorecount.textContent = 'You: ' + playerScore;
+  computerScorecount.textContent = 'Computer: ' + playerScore
+  roundResult.textContent = 'First to 5 points wins. Choose carefully :)';
+}
+
