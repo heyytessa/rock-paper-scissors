@@ -7,6 +7,9 @@ let computerScore = 0
 let rockBtn = document.getElementById('rock-button');
 let paperBtn = document.getElementById('paper-button');
 let scissorsBtn = document.getElementById('scissors-button');
+let playerEmoji = document.getElementById('player-emoji');
+let computerEmoji = document.getElementById('computer-emoji');
+let roundResult = document.getElementById('round-result');
 let winnerAnnouncement = document.querySelector('div');
 let winner = document.createElement('p');
 winnerAnnouncement.appendChild(winner);
@@ -17,37 +20,68 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {  
-  if (playerSelection === computerSelection) {
-  } else if (playerSelection === 'rock') {
+  if (playerSelection === 'rock') {
+    playerEmoji.textContent = '🪨';
     switch (computerSelection) {
       case 'paper':
+        computerEmoji.textContent = '📃';
         computerScore++;
+        roundResult.textContent = 'Paper beats rock, the computer wins this round!';
         break;
       case 'scissors':
+        computerEmoji.textContent = '✂️';        
         playerScore++;
+        roundResult.textContent = 'Rock smashes scissors, you win this round!';
+      break;
+      case 'rock':
+        computerEmoji.textContent = '🪨';
+        roundResult.textContent = 'This round is a draw.';
       break;
     }
   } else if (playerSelection === 'paper') {
+    playerEmoji.textContent = '📃';
     switch (computerSelection) {
       case 'rock':
+        computerEmoji.textContent = '🪨';
         playerScore++;
+        roundResult.textContent = 'Paper beats rock, you win this round!';
         break;
       case 'scissors':
+        computerEmoji.textContent = '✂️';
         computerScore++;
-        break;
+        roundResult.textContent = 'Scissors cut paper, the computer wins this round!';
+      break;
+      case 'rock':
+        computerEmoji.textContent = '📃';
+        roundResult.textContent = 'This round is a draw.';
+      break;
     }
   } else if (playerSelection == 'scissors') {
+    playerEmoji.textContent = '✂️';
     switch (computerSelection) {
       case 'rock':
+        computerEmoji.textContent = '🪨';
         computerScore++
+        roundResult.textContent = 'Rock smashes scissors, the computer wins this round!';
         break;
       case 'paper':
+        computerEmoji.textContent = '📃';
         playerScore++
-        break;
-    }
+        roundResult.textContent = 'Scissors cut paper, you win this round!';
+      break;
+      case 'scissors':
+        computerEmoji.textContent = '✂️';
+        roundResult.textContent = 'This round is a draw.';
+      break;
+    }  
   }
-  console.log(playerScore);
-  console.log(computerScore);
+
+  let playerScorecount = document.getElementById('player-scorecount');
+  playerScorecount.textContent = 'You: ' + playerScore;
+
+  let computerScorecount = document.getElementById('computer-scorecount');
+  computerScorecount.textContent = 'Computer: ' + computerScore;
+
 }
 
 //UI

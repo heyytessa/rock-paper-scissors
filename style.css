@@ -1,15 +1,18 @@
 body {
   font-family: Inter, sans-serif;
   font-size: 14px;
+}
 
+h1 {
+  font-size: 40px;
 }
 
 button {
   padding: 20px 24px;
-  font-size: 24px;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  font-size: 30px;
+  background-color: #f9f9f9;
   border-radius: 8px;
+  border: none;
 }
 
 button:hover {
@@ -17,20 +20,46 @@ button:hover {
 }
 
 button:active {
-  border: 1px solid #404040;
-  background-color: #fff;
+  background-color: #f6f6f6;
 }
-
 
 .container {
   width: 100%;
-  margin: 0 auto;
+  margin: 120px auto;
 }
 
+.header {
+  margin-bottom: 40px;
+  text-align: center;
+}
 .game-buttons {
-  margin: 100px auto;
+  margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
+}
+
+.scores {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  height: 200px;
+  font-size: 18px;
+}
+
+.emoji {
+  font-size: 60px;
+  text-align: center;
+}
+
+.round-result {
+  text-align: center;
+  font-size: 18px;
+}
+
+.scorebox {
+  width: 120px;
+  text-align: center;
 }
