@@ -1,8 +1,10 @@
+//Gameplay
+
 let gamePlay = ['rock', 'paper', 'scissors'];
 let playerScore = 0
 let computerScore = 0
 
-let rockBtn = document.getElementsById('rock-button');
+let rockBtn = document.getElementById('rock-button');
 let paperBtn = document.getElementById('paper-button');
 let scissorsBtn = document.getElementById('scissors-button');
 let winnerAnnouncement = document.querySelector('div');
@@ -48,23 +50,19 @@ function playRound(playerSelection, computerSelection) {
   console.log(computerScore);
 }
 
-function game() {
-  for (i=0; i<5; i++) {
-  let playerSelection = prompt('Select rock, paper, or scissors');
+//UI
+
+rockBtn.addEventListener('click', () => game('rock'));
+paperBtn.addEventListener('click', () => game('paper'));
+scissorsBtn.addEventListener('click', () => game('scissors'));
+
+function game (playerSelection) {
   let computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
-  }
 
-  if (playerScore > computerScore) {
-    winner.textContent = 'Congratulations, you won!';
-  } else if (playerScore < computerScore) {
-    winner.textContent = 'Sorry, you lost!';
-  } else {
-    winner.textContent = 'That\'s a draw!';
-  }
-
-
+   if (playerScore === 5) {
+     winner.textContent = 'Congratulations, you won!';
+    } else if (computerScore === 5) {
+     winner.textContent = 'Sorry, you lost!';
+    }
 }
-
-game();
-
